@@ -17,6 +17,8 @@ dist/
 # Results
 results/*.json
 !results/.gitkeep
+!results/example_stats_before.json
+!results/example_stats_after.json
 
 # IDE
 .vscode/

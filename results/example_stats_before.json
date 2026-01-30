@@ -1,0 +1,42 @@
+{
+  "date_test": "2026-01-28T16:17:19.879Z",
+  "total_documents": 100000,
+  "avec_index": false,
+  "resultats": [
+    {
+      "requete": "Filtre Simple (match_id)",
+      "temps_ms": 135,
+      "docs_examines": 100000,
+      "docs_retournes": 1,
+      "type_scan": "COLLSCAN"
+    },
+    {
+      "requete": "Filtre par competition",
+      "temps_ms": 103,
+      "docs_examines": 100000,
+      "docs_retournes": 12541,
+      "type_scan": "COLLSCAN"
+    },
+    {
+      "requete": "ESR (Competition + Statut + Sort)",
+      "temps_ms": 78,
+      "docs_examines": 100000,
+      "docs_retournes": 20,
+      "type_scan": "SORT"
+    },
+    {
+      "requete": "OR (Equipe domicile OU exterieur)",
+      "temps_ms": 102,
+      "docs_examines": 100000,
+      "docs_retournes": 8948,
+      "type_scan": "SUBPLAN"
+    },
+    {
+      "requete": "Range Date + Statut + Sort Spectateurs",
+      "temps_ms": 103,
+      "docs_examines": 100000,
+      "docs_retournes": 10,
+      "type_scan": "SORT"
+    }
+  ]
+}
