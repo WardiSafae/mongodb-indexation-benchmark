@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb-benchmark
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: football_db
+    volumes:
+      - mongodb_data:/data/db
+      - ./scripts:/scripts
+      - ./results:/results
+    command: mongod --quiet
+    
+  python-app:
+    build: .
+    container_name: python-generator
+    depends_on:
+      - mongodb
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./scripts:/app/scripts
+    environment:
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+    command: ["sleep", "infinity"]
+
+volumes:
+  mongodb_data:
